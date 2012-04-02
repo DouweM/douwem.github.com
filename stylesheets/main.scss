@@ -4,8 +4,6 @@ $gutter-width:              10px;
 $name-font-size:            30px;
 $name-height:               $name-font-size + 10px;
 
-$trait-category-padding:    10px;
-
 $trait-font-size:           20px;
 $trait-height:              $trait-font-size + 5px;
 $trait-padding:             10px;
@@ -67,10 +65,9 @@ body {
     
     section {
       position: relative;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       
       h2 {
-        padding-top: $trait-category-padding;
         line-height: $name-height;
 
         font-size: $name-font-size;
@@ -93,7 +90,7 @@ body {
       }
       
       &:first-child h2 {
-        margin-top: -($name-height / 2) - $trait-category-padding;
+        margin-top: -($name-height / 2);
       }
       
       &:last-child {
