@@ -1,6 +1,6 @@
 $(document).ready ->
-  setLastSectionMinHeight()
-  $(window).on "resize", setLastSectionMinHeight
+  setLastSectionMarginBottom()
+  $(window).on "resize", setLastSectionMarginBottom
   
   $("header nav a").on "click", handleNavLinkClick
   
@@ -12,11 +12,11 @@ verticallyCenterTextEl = (el) ->
   
   $(window).scrollTop Math.ceil(elCenter - windowCenter)
 
-setLastSectionMinHeight = ->
+setLastSectionMarginBottom = ->
   lastSection = $("#traits section").last()
-  headerEl    = $("h2", lastSection)
-  lastSectionMinHeight = ($(window).height() / 2) + (headerEl.outerHeight() / 2)
-  lastSection.css "min-height", Math.ceil(lastSectionMinHeight)
+  lastCenterable = $("h2, ul li", lastSection).last()
+  lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2)
+  lastSection.css "margin-bottom", Math.ceil(lastSectionMarginBottom)
 
 handleNavLinkClick = (event) ->  
   event.preventDefault()
@@ -34,22 +34,20 @@ handleKeyDown = (event) ->
   
   scrollCenter = $(window).scrollTop() + ($(window).height() / 2)
   
-  centeredEl = null
   centerableEls = $("section h2, section ul li")
+
+  centeredEl = null
   lastElBottom = 0
   for el in centerableEls
     el = $(el)
     offset = el.offset()
     elBottom = (offset.top + el.outerHeight())
-    
     if lastElBottom <= scrollCenter <= elBottom
       centeredEl = el
       break
-      
     lastElBottom = elBottom
   
   centeredEl = centerableEls.last() if centeredEl == null
-  
   centeredElIndex = centerableEls.index centeredEl
   
   otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1

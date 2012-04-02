@@ -1,9 +1,9 @@
 (function() {
-  var handleKeyDown, handleNavLinkClick, setLastSectionMinHeight, verticallyCenterTextEl;
+  var handleKeyDown, handleNavLinkClick, setLastSectionMarginBottom, verticallyCenterTextEl;
 
   $(document).ready(function() {
-    setLastSectionMinHeight();
-    $(window).on("resize", setLastSectionMinHeight);
+    setLastSectionMarginBottom();
+    $(window).on("resize", setLastSectionMarginBottom);
     $("header nav a").on("click", handleNavLinkClick);
     return $(window).on("keydown", handleKeyDown);
   });
@@ -15,12 +15,12 @@
     return $(window).scrollTop(Math.ceil(elCenter - windowCenter));
   };
 
-  setLastSectionMinHeight = function() {
-    var headerEl, lastSection, lastSectionMinHeight;
+  setLastSectionMarginBottom = function() {
+    var lastCenterable, lastSection, lastSectionMarginBottom;
     lastSection = $("#traits section").last();
-    headerEl = $("h2", lastSection);
-    lastSectionMinHeight = ($(window).height() / 2) + (headerEl.outerHeight() / 2);
-    return lastSection.css("min-height", Math.ceil(lastSectionMinHeight));
+    lastCenterable = $("h2, ul li", lastSection).last();
+    lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2);
+    return lastSection.css("margin-bottom", Math.ceil(lastSectionMarginBottom));
   };
 
   handleNavLinkClick = function(event) {
@@ -38,8 +38,8 @@
     if ((_ref = event.which) !== 38 && _ref !== 40) return;
     event.preventDefault();
     scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
-    centeredEl = null;
     centerableEls = $("section h2, section ul li");
+    centeredEl = null;
     lastElBottom = 0;
     for (_i = 0, _len = centerableEls.length; _i < _len; _i++) {
       el = centerableEls[_i];
