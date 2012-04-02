@@ -1,0 +1,110 @@
+$header-width:              40%;
+$gutter-width:              10px;
+
+$name-font-size:            30px;
+$name-height:               $name-font-size + 10px;
+
+$trait-category-padding:    10px;
+
+$trait-font-size:           20px;
+$trait-height:              $trait-font-size + 5px;
+$trait-padding:             10px;
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+body {
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: $header-width;
+    
+    h1 {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -($name-height / 2);
+      line-height: $name-height;
+      
+      text-align: right;
+      font-size: $name-font-size;
+      font-weight: bold;
+    }
+    
+    nav {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: ($name-height / 2);
+      
+      text-align: right;
+      
+      ul {
+        width: 100%;
+        list-style: none;
+        
+        li {
+          a {
+            
+          }
+        }
+      }
+    }
+  }
+  
+  #traits {
+    position: absolute;
+    top: 0;
+    left: $header-width;
+    right: 0;
+    margin-top: 50%;
+    padding-left: $gutter-width;
+    
+    section {
+      position: relative;
+      margin-bottom: 20px;
+      
+      h2 {
+        padding-top: $trait-category-padding;
+        line-height: $name-height;
+
+        font-size: $name-font-size;
+        font-weight: bold;
+      }
+      
+      ul {
+        list-style: none;
+        
+        li {
+          padding: $trait-padding 0;
+          line-height: $trait-height;
+          
+          font-size: $trait-font-size;
+          
+          a {
+            
+          }
+        }
+      }
+      
+      &:first-child h2 {
+        margin-top: -($name-height / 2) - $trait-category-padding;
+      }
+      
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+  
+  header nav li, #traits h2, #traits li {
+    span {
+      display: none;
+    }
+  }
+}
