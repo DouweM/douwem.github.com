@@ -1,5 +1,5 @@
 (function() {
-  var handleKeyDown, handleNavLinkClick, setLastSectionMarginBottom, verticallyCenterTextEl;
+  var currentlyCenteredEl, handleKeyDown, handleNavLinkClick, setLastSectionMarginBottom, verticallyCenterTextEl;
 
   $(document).ready(function() {
     setLastSectionMarginBottom();
@@ -24,19 +24,17 @@
   };
 
   handleNavLinkClick = function(event) {
-    var headerEl, href, link, sectionEl;
+    var firstCenterable, href, link, section;
     event.preventDefault();
     link = $(event.target);
     href = link.attr("href");
-    sectionEl = $(href);
-    headerEl = $("h2", sectionEl);
-    return verticallyCenterTextEl(headerEl);
+    section = $(href);
+    firstCenterable = $("h2, ul li", section).first();
+    return verticallyCenterTextEl(firstCenterable);
   };
 
-  handleKeyDown = function(event) {
-    var centerableEls, centeredEl, centeredElIndex, el, elBottom, lastElBottom, offset, otherEl, otherIndex, scrollCenter, _i, _len, _ref;
-    if ((_ref = event.which) !== 38 && _ref !== 40) return;
-    event.preventDefault();
+  currentlyCenteredEl = function() {
+    var centerableEls, centeredEl, el, elBottom, lastElBottom, offset, scrollCenter, _i, _len;
     scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
     centerableEls = $("section h2, section ul li");
     centeredEl = null;
@@ -52,7 +50,15 @@
       }
       lastElBottom = elBottom;
     }
-    if (centeredEl === null) centeredEl = centerableEls.last();
+    return centeredEl || centerableEls.last();
+  };
+
+  handleKeyDown = function(event) {
+    var centerableEls, centeredEl, centeredElIndex, otherEl, otherIndex, _ref;
+    if ((_ref = event.which) !== 38 && _ref !== 40) return;
+    event.preventDefault();
+    centerableEls = $("section h2, section ul li");
+    centeredEl = currentlyCenteredEl();
     centeredElIndex = centerableEls.index(centeredEl);
     otherIndex = event.which === 38 ? centeredElIndex - 1 : centeredElIndex + 1;
     if (!((0 <= otherIndex && otherIndex < centerableEls.length))) return;

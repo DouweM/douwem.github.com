@@ -21,17 +21,14 @@ setLastSectionMarginBottom = ->
 handleNavLinkClick = (event) ->  
   event.preventDefault()
   
-  link      = $(event.target)
-  href      = link.attr "href"
-  sectionEl = $(href)
-  headerEl  = $("h2", sectionEl)
+  link    = $(event.target)
+  href    = link.attr "href"
+  section = $(href)
+  firstCenterable = $("h2, ul li", section).first()
   
-  verticallyCenterTextEl headerEl
+  verticallyCenterTextEl firstCenterable
 
-handleKeyDown = (event) ->
-  return unless event.which in [38, 40] # Up, Down
-  event.preventDefault()
-  
+currentlyCenteredEl = ->
   scrollCenter = $(window).scrollTop() + ($(window).height() / 2)
   
   centerableEls = $("section h2, section ul li")
@@ -47,11 +44,19 @@ handleKeyDown = (event) ->
       break
     lastElBottom = elBottom
   
-  centeredEl = centerableEls.last() if centeredEl == null
+  centeredEl || centerableEls.last()
+  
+handleKeyDown = (event) ->
+  return unless event.which in [38, 40] # Up, Down
+  event.preventDefault()
+  
+  centerableEls = $("section h2, section ul li")
+
+  centeredEl = currentlyCenteredEl()
   centeredElIndex = centerableEls.index centeredEl
   
   otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1
   return unless 0 <= otherIndex < centerableEls.length
   
-  otherEl = centerableEls.eq(otherIndex)
+  otherEl = centerableEls.eq otherIndex
   verticallyCenterTextEl otherEl
