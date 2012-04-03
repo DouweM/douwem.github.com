@@ -8,13 +8,6 @@
     return $(window).on("keydown", handleKeyDown);
   });
 
-  verticallyCenterTextEl = function(el) {
-    var elCenter, windowCenter;
-    elCenter = el.offset().top + (el.outerHeight() / 2);
-    windowCenter = $(window).height() / 2;
-    return $(window).scrollTop(Math.ceil(elCenter - windowCenter));
-  };
-
   setLastSectionMarginBottom = function() {
     var lastCenterable, lastSection, lastSectionMarginBottom;
     lastSection = $("#traits section").last();
@@ -31,27 +24,6 @@
     section = $(href);
     firstCenterable = $("h2, ul li", section).first();
     return verticallyCenterTextEl(firstCenterable);
-  };
-
-  currentlyCenteredEl = function(centerableEls) {
-    var centeredEl, el, elTop, lastElTop, offset, scrollCenter, _i, _len;
-    if (centerableEls == null) centerableEls = $("h2, ul li", $("section"));
-    centerableEls = $(centerableEls.get().reverse());
-    scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
-    centeredEl = null;
-    lastElTop = 10000;
-    for (_i = 0, _len = centerableEls.length; _i < _len; _i++) {
-      el = centerableEls[_i];
-      el = $(el);
-      offset = el.offset();
-      elTop = offset.top;
-      if ((elTop <= scrollCenter && scrollCenter <= lastElTop)) {
-        centeredEl = el;
-        break;
-      }
-      lastElTop = elTop;
-    }
-    return centeredEl || centerableEls.last();
   };
 
   handleKeyDown = function(event) {
@@ -86,6 +58,34 @@
         otherEl = centerableEls.eq(otherIndex);
         return verticallyCenterTextEl(otherEl);
     }
+  };
+
+  verticallyCenterTextEl = function(el) {
+    var elCenter, windowCenter;
+    elCenter = el.offset().top + (el.outerHeight() / 2);
+    windowCenter = $(window).height() / 2;
+    return $(window).scrollTop(Math.ceil(elCenter - windowCenter));
+  };
+
+  currentlyCenteredEl = function(centerableEls) {
+    var centeredEl, el, elTop, lastElTop, offset, scrollCenter, _i, _len;
+    if (centerableEls == null) centerableEls = $("h2, ul li", $("section"));
+    centerableEls = $(centerableEls.get().reverse());
+    scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
+    centeredEl = null;
+    lastElTop = 10000;
+    for (_i = 0, _len = centerableEls.length; _i < _len; _i++) {
+      el = centerableEls[_i];
+      el = $(el);
+      offset = el.offset();
+      elTop = offset.top;
+      if ((elTop <= scrollCenter && scrollCenter <= lastElTop)) {
+        centeredEl = el;
+        break;
+      }
+      lastElTop = elTop;
+    }
+    return centeredEl || centerableEls.last();
   };
 
 }).call(this);
