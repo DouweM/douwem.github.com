@@ -14,7 +14,7 @@ setLastSectionMarginBottom = ->
   if navigator.userAgent.match /(iPhone|iPod)/
     # $(window).height() != window.innerHeight on iPhone
     # See http://bugs.jquery.com/ticket/6724
-    lastSectionMarginBottom = window.innerHeight - lastCenterable.outerHeight()
+    lastSectionMarginBottom = window.innerHeight - (lastCenterable.outerHeight() / 2) - ($("header").outerHeight(true) / 2)
   else
     lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2)
 

@@ -124,6 +124,7 @@ body {
     width: $site-width;
     
     header {
+      bottom: auto;
       padding: $site-padding;
       width: $site-width - 2 * $site-padding;
       

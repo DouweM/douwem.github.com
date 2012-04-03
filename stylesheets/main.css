@@ -66,6 +66,7 @@ body {
   body {
     width: 480px; }
     body header {
+      bottom: auto;
       padding: 10px;
       width: 460px;
       text-align: left; }

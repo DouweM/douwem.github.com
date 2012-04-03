@@ -14,7 +14,7 @@
     lastSection = $("#traits section").last();
     lastCenterable = $("h2, ul li", lastSection).last();
     if (navigator.userAgent.match(/(iPhone|iPod)/)) {
-      lastSectionMarginBottom = window.innerHeight - lastCenterable.outerHeight();
+      lastSectionMarginBottom = window.innerHeight - (lastCenterable.outerHeight() / 2) - ($("header").outerHeight(true) / 2);
     } else {
       lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2);
     }
