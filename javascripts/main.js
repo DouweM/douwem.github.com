@@ -33,22 +33,22 @@
     return verticallyCenterTextEl(firstCenterable);
   };
 
-  currentlyCenteredEl = function() {
-    var centerableEls, centeredEl, el, elBottom, lastElBottom, offset, scrollCenter, _i, _len;
+  currentlyCenteredEl = function(centerableEls) {
+    var centeredEl, el, elTop, lastElTop, offset, scrollCenter, _i, _len;
+    centerableEls = $(centerableEls.get().reverse());
     scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
-    centerableEls = $("section h2, section ul li");
     centeredEl = null;
-    lastElBottom = 0;
+    lastElTop = 10000;
     for (_i = 0, _len = centerableEls.length; _i < _len; _i++) {
       el = centerableEls[_i];
       el = $(el);
       offset = el.offset();
-      elBottom = offset.top + el.outerHeight();
-      if ((lastElBottom <= scrollCenter && scrollCenter <= elBottom)) {
+      elTop = offset.top;
+      if ((elTop <= scrollCenter && scrollCenter <= lastElTop)) {
         centeredEl = el;
         break;
       }
-      lastElBottom = elBottom;
+      lastElTop = elTop;
     }
     return centeredEl || centerableEls.last();
   };
@@ -57,8 +57,12 @@
     var centerableEls, centeredEl, centeredElIndex, otherEl, otherIndex, _ref;
     if ((_ref = event.which) !== 38 && _ref !== 40) return;
     event.preventDefault();
-    centerableEls = $("section h2, section ul li");
-    centeredEl = currentlyCenteredEl();
+    if (event.altKey) {
+      centerableEls = $("h2:first-child, section > ul:first-child li:first-child", $("section"));
+    } else {
+      centerableEls = $("h2, ul li", $("section"));
+    }
+    centeredEl = currentlyCenteredEl(centerableEls);
     centeredElIndex = centerableEls.index(centeredEl);
     otherIndex = event.which === 38 ? centeredElIndex - 1 : centeredElIndex + 1;
     if (!((0 <= otherIndex && otherIndex < centerableEls.length))) return;

@@ -28,21 +28,22 @@ handleNavLinkClick = (event) ->
   
   verticallyCenterTextEl firstCenterable
 
-currentlyCenteredEl = ->
+currentlyCenteredEl = (centerableEls) ->
+  # Reverse centerableEls
+  centerableEls = $(centerableEls.get().reverse())
+  
   scrollCenter = $(window).scrollTop() + ($(window).height() / 2)
   
-  centerableEls = $("section h2, section ul li")
-
   centeredEl = null
-  lastElBottom = 0
+  lastElTop = 10000 # Arbitrary large number
   for el in centerableEls
     el = $(el)
     offset = el.offset()
-    elBottom = (offset.top + el.outerHeight())
-    if lastElBottom <= scrollCenter <= elBottom
+    elTop = offset.top
+    if elTop <= scrollCenter <= lastElTop
       centeredEl = el
       break
-    lastElBottom = elBottom
+    lastElTop = elTop
   
   centeredEl || centerableEls.last()
   
@@ -50,9 +51,12 @@ handleKeyDown = (event) ->
   return unless event.which in [38, 40] # Up, Down
   event.preventDefault()
   
-  centerableEls = $("section h2, section ul li")
+  if event.altKey # Scroll down one section 
+    centerableEls = $("h2:first-child, section > ul:first-child li:first-child", $("section"))
+  else # Scroll down one line
+    centerableEls = $("h2, ul li", $("section"))
 
-  centeredEl = currentlyCenteredEl()
+  centeredEl = currentlyCenteredEl centerableEls
   centeredElIndex = centerableEls.index centeredEl
   
   otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1
