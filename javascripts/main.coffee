@@ -43,7 +43,7 @@ handleKeyDown = (event) ->
       event.preventDefault()
   
       if event.altKey # Scroll up/down one section 
-        centerableEls = $("h2:first-child, ul:first-child li:first-child", $("section"))
+        centerableEls = $("h2, ul:first-child li:first-child", $("section"))
       else # Scroll up/down one line
         centerableEls = $("h2, ul li", $("section"))
 

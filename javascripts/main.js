@@ -47,7 +47,7 @@
         if (event.metaKey) return;
         event.preventDefault();
         if (event.altKey) {
-          centerableEls = $("h2:first-child, ul:first-child li:first-child", $("section"));
+          centerableEls = $("h2, ul:first-child li:first-child", $("section"));
         } else {
           centerableEls = $("h2, ul li", $("section"));
         }
