@@ -15,6 +15,17 @@ $trait-padding:             11px 0 9px 0;
 }
 
 body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  a {
+    color: #0046AA;
+    text-decoration: none;
+    
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  
   header {
     position: fixed;
     top: 0;
@@ -47,9 +58,7 @@ body {
         list-style: none;
         
         li {
-          a {
-            
-          }
+          padding: 2px 0;
         }
       }
     }

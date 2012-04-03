@@ -3,53 +3,62 @@
   padding: 0;
   border: 0; }
 
-body header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 40%; }
-  body header h1 {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: -20px;
-    line-height: 40px;
-    text-align: right;
-    font-size: 30px;
-    font-weight: bold; }
-  body header nav {
-    position: absolute;
-    top: 50%;
-    right: 0;
-    margin-top: 20px;
-    text-align: right; }
-    body header nav ul {
-      width: 100%;
-      list-style: none; }
-body #traits {
-  position: absolute;
-  top: 0;
-  left: 40%;
-  right: 0;
-  margin-top: 50%;
-  padding-left: 10px; }
-  body #traits section {
-    position: relative;
-    margin-bottom: 30px; }
-    body #traits section h2 {
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  body a {
+    color: #0046AA;
+    text-decoration: none; }
+    body a:hover {
+      text-decoration: underline; }
+  body header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 40%; }
+    body header h1 {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: -20px;
       line-height: 40px;
+      text-align: right;
       font-size: 30px;
       font-weight: bold; }
-    body #traits section ul {
-      list-style: none; }
-      body #traits section ul li {
-        padding: 11px 0 9px 0;
-        line-height: 25px;
-        font-size: 20px; }
-    body #traits section:first-child h2 {
-      margin-top: -20px; }
-    body #traits section:last-child {
-      margin-bottom: 0; }
-body header nav li span, body #traits h2 span, body #traits li span {
-  display: none; }
+    body header nav {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      margin-top: 20px;
+      text-align: right; }
+      body header nav ul {
+        width: 100%;
+        list-style: none; }
+        body header nav ul li {
+          padding: 2px 0; }
+  body #traits {
+    position: absolute;
+    top: 0;
+    left: 40%;
+    right: 0;
+    margin-top: 50%;
+    padding-left: 10px; }
+    body #traits section {
+      position: relative;
+      margin-bottom: 30px; }
+      body #traits section h2 {
+        line-height: 40px;
+        font-size: 30px;
+        font-weight: bold; }
+      body #traits section ul {
+        list-style: none; }
+        body #traits section ul li {
+          padding: 11px 0 9px 0;
+          line-height: 25px;
+          font-size: 20px; }
+      body #traits section:first-child h2 {
+        margin-top: -20px; }
+      body #traits section:last-child {
+        margin-bottom: 0; }
+  body header nav li span, body #traits h2 span, body #traits li span {
+    display: none; }
