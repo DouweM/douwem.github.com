@@ -72,6 +72,7 @@
         break;
       case 38:
       case 40:
+        if (event.metaKey) return;
         event.preventDefault();
         if (event.altKey) {
           centerableEls = $("h2:first-child, ul:first-child li:first-child", $("section"));

@@ -63,6 +63,8 @@ handleKeyDown = (event) ->
           window.location.href = url
       
     when 38, 40 # Up, Down
+      return if event.metaKey # Don't handle if Windows or Command key was pressed
+      
       event.preventDefault()
   
       if event.altKey # Scroll down one section 
