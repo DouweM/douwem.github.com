@@ -6,10 +6,17 @@ $(document).ready ->
   
   $(window).on "keydown", handleKeyDown
   
-setLastSectionMarginBottom = ->
+setLastSectionMarginBottom = ->  
   lastSection = $("#traits section").last()
   lastCenterable = $("h2, ul li", lastSection).last()
-  lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2)
+  
+  if navigator.userAgent.match /(iPhone|iPod)/
+    # $(window).height() != window.innerHeight on iPhone
+    # See http://bugs.jquery.com/ticket/6724
+    lastSectionMarginBottom = window.innerHeight - lastCenterable.outerHeight()
+  else
+    lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2)
+
   lastSection.css "margin-bottom", Math.ceil(lastSectionMarginBottom)
 
 handleNavLinkClick = (event) ->  

@@ -12,7 +12,11 @@
     var lastCenterable, lastSection, lastSectionMarginBottom;
     lastSection = $("#traits section").last();
     lastCenterable = $("h2, ul li", lastSection).last();
-    lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2);
+    if (navigator.userAgent.match(/(iPhone|iPod)/)) {
+      lastSectionMarginBottom = window.innerHeight - lastCenterable.outerHeight();
+    } else {
+      lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2);
+    }
     return lastSection.css("margin-bottom", Math.ceil(lastSectionMarginBottom));
   };
 
