@@ -4,8 +4,9 @@
   $(document).ready(function() {
     setLastSectionMarginBottom();
     $(window).on("resize", setLastSectionMarginBottom);
-    $("header nav a").on("click", handleNavLinkClick);
-    return $(window).on("keydown", handleKeyDown);
+    $(window).on("orientationchange", setLastSectionMarginBottom);
+    $(window).on("keydown", handleKeyDown);
+    return $("header nav a").on("click", handleNavLinkClick);
   });
 
   setLastSectionMarginBottom = function() {

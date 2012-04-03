@@ -1,10 +1,11 @@
 $(document).ready ->
   setLastSectionMarginBottom()
-  $(window).on "resize", setLastSectionMarginBottom
+  $(window).on "resize",            setLastSectionMarginBottom
+  $(window).on "orientationchange", setLastSectionMarginBottom
   
-  $("header nav a").on "click", handleNavLinkClick
+  $(window).on "keydown",           handleKeyDown
   
-  $(window).on "keydown", handleKeyDown
+  $("header nav a").on "click",     handleNavLinkClick
   
 setLastSectionMarginBottom = ->  
   lastSection = $("#traits section").last()

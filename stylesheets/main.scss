@@ -1,12 +1,12 @@
-$header-width:              40%;
-$gutter-width:              10px;
+$header-width:    40%;
+$gutter-width:    10px;
 
-$name-font-size:            30px;
-$name-height:               $name-font-size + 10px;
+$name-font-size:  30px;
+$name-height:     $name-font-size + 10px;
 
-$trait-font-size:           20px;
-$trait-height:              $trait-font-size + 5px;
-$trait-padding:             11px 0 9px 0;
+$trait-font-size: 20px;
+$trait-height:    $trait-font-size + 5px;
+$trait-padding:   11px 0 9px 0;
 
 * {
   margin: 0;
@@ -115,13 +115,17 @@ body {
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {  
+  $site-width:        480px;
+  $site-padding:      10px;
+  $header-side-width: 100px;
+  $gutter-width:      10px;
+  
   body {
-    width: 480px;
+    width: $site-width;
     
     header {
-      padding-top: 10px;
-      padding-left: 10px;
-      width: 480px - 10px;
+      padding: $site-padding;
+      width: $site-width - 2 * $site-padding;
       
       text-align: left;
 
@@ -138,11 +142,11 @@ body {
     }
     
     #traits {
-      margin-top: ($name-height + 10px) + 10px;
-      margin-left: 100px + 10px;
-      padding-left: 10px;
-      padding-right: 10px;
-      width: 480px - (100px + 10px) - 10px - 10px;
+      margin-top: $site-padding + $name-height + 10px;
+      margin-left: $site-padding + $header-side-width;
+      margin-right: $site-padding;
+      padding-left: $gutter-width;
+      width: $site-width - $header-side-width - $gutter-width - 2 * $site-padding;
       
       background-color: white;
       
@@ -155,11 +159,13 @@ body {
   }
   
   @media (orientation: landscape) {
+    $wide-site-width: 720px;
+    
     body {
-      width: 720px;
+      width: $wide-site-width;
 
       header, #traits {
-        left: (720px - 480px) / 2;
+        left: ($wide-site-width - $site-width) / 2;
       }
     }
   }
