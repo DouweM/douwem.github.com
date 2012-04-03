@@ -35,6 +35,7 @@
 
   currentlyCenteredEl = function(centerableEls) {
     var centeredEl, el, elTop, lastElTop, offset, scrollCenter, _i, _len;
+    if (centerableEls == null) centerableEls = $("h2, ul li", $("section"));
     centerableEls = $(centerableEls.get().reverse());
     scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
     centeredEl = null;
@@ -54,20 +55,36 @@
   };
 
   handleKeyDown = function(event) {
-    var centerableEls, centeredEl, centeredElIndex, otherEl, otherIndex, _ref;
-    if ((_ref = event.which) !== 38 && _ref !== 40) return;
-    event.preventDefault();
-    if (event.altKey) {
-      centerableEls = $("h2:first-child, section > ul:first-child li:first-child", $("section"));
-    } else {
-      centerableEls = $("h2, ul li", $("section"));
+    var centerableEls, centeredEl, centeredElIndex, link, otherEl, otherIndex, url;
+    switch (event.which) {
+      case 13:
+        event.preventDefault();
+        centeredEl = currentlyCenteredEl();
+        link = $("a", centeredEl);
+        if (link.length) {
+          url = link.attr("href");
+          if (link.attr("target") === "_blank") {
+            return window.open(url);
+          } else {
+            return window.location.href = url;
+          }
+        }
+        break;
+      case 38:
+      case 40:
+        event.preventDefault();
+        if (event.altKey) {
+          centerableEls = $("h2:first-child, ul:first-child li:first-child", $("section"));
+        } else {
+          centerableEls = $("h2, ul li", $("section"));
+        }
+        centeredEl = currentlyCenteredEl(centerableEls);
+        centeredElIndex = centerableEls.index(centeredEl);
+        otherIndex = event.which === 38 ? centeredElIndex - 1 : centeredElIndex + 1;
+        if (!((0 <= otherIndex && otherIndex < centerableEls.length))) return;
+        otherEl = centerableEls.eq(otherIndex);
+        return verticallyCenterTextEl(otherEl);
     }
-    centeredEl = currentlyCenteredEl(centerableEls);
-    centeredElIndex = centerableEls.index(centeredEl);
-    otherIndex = event.which === 38 ? centeredElIndex - 1 : centeredElIndex + 1;
-    if (!((0 <= otherIndex && otherIndex < centerableEls.length))) return;
-    otherEl = centerableEls.eq(otherIndex);
-    return verticallyCenterTextEl(otherEl);
   };
 
 }).call(this);

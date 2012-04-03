@@ -28,7 +28,7 @@ handleNavLinkClick = (event) ->
   
   verticallyCenterTextEl firstCenterable
 
-currentlyCenteredEl = (centerableEls) ->
+currentlyCenteredEl = (centerableEls = $("h2, ul li", $("section"))) ->
   # Reverse centerableEls
   centerableEls = $(centerableEls.get().reverse())
   
@@ -48,19 +48,33 @@ currentlyCenteredEl = (centerableEls) ->
   centeredEl || centerableEls.last()
   
 handleKeyDown = (event) ->
-  return unless event.which in [38, 40] # Up, Down
-  event.preventDefault()
+  switch event.which
+    when 13 # Enter
+      event.preventDefault()
+      
+      centeredEl = currentlyCenteredEl()
+      link = $("a", centeredEl)
+      
+      if link.length
+        url = link.attr("href") 
+        if link.attr("target") == "_blank"
+          window.open url
+        else
+          window.location.href = url
+      
+    when 38, 40 # Up, Down
+      event.preventDefault()
   
-  if event.altKey # Scroll down one section 
-    centerableEls = $("h2:first-child, section > ul:first-child li:first-child", $("section"))
-  else # Scroll down one line
-    centerableEls = $("h2, ul li", $("section"))
+      if event.altKey # Scroll down one section 
+        centerableEls = $("h2:first-child, ul:first-child li:first-child", $("section"))
+      else # Scroll down one line
+        centerableEls = $("h2, ul li", $("section"))
 
-  centeredEl = currentlyCenteredEl centerableEls
-  centeredElIndex = centerableEls.index centeredEl
+      centeredEl = currentlyCenteredEl centerableEls
+      centeredElIndex = centerableEls.index centeredEl
   
-  otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1
-  return unless 0 <= otherIndex < centerableEls.length
+      otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1
+      return unless 0 <= otherIndex < centerableEls.length
   
-  otherEl = centerableEls.eq otherIndex
-  verticallyCenterTextEl otherEl
+      otherEl = centerableEls.eq otherIndex
+      verticallyCenterTextEl otherEl
