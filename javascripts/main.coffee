@@ -98,7 +98,7 @@ class PersonalSite
     
   _focusCenterFromWindowTop: ->  
     if navigator.userAgent.match /(iPhone|iPod)/
-      ($("header").outerHeight(true) / 2)
+      parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2)
     else
       ($(window).height() / 2)    
 

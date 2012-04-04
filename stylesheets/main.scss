@@ -4,6 +4,8 @@ $gutter-width:    10px;
 $name-font-size:  30px;
 $name-height:     $name-font-size + 10px;
 
+$nav-font-size:   16px;
+
 $trait-font-size: 20px;
 $trait-height:    $trait-font-size + 5px;
 $trait-padding:   11px 0 9px 0;
@@ -51,6 +53,8 @@ body {
       top: 50%;
       right: 0;
       margin-top: ($name-height / 2);
+      
+      font-size: $nav-font-size;
             
       ul {
         width: 100%;
@@ -114,42 +118,29 @@ body {
   }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {  
-  $site-width:        480px;
-  $site-padding:      10px;
-  $header-side-width: 100px;
-  $gutter-width:      10px;
+// Devices with a screen at least 320px and at most 600px wide, such as smartphones
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
+  $site-padding: 10px;
   
   body {
-    width: $site-width;
+    width: 100%;
+    -webkit-text-size-adjust: none;
     
     header {
       bottom: auto;
       padding: $site-padding;
-      width: $site-width - 2 * $site-padding;
-      
-      text-align: left;
+      padding-right: 0;
+      padding-bottom: 0;
 
-      h1 {
-        position: relative;
-        margin: 0;
-        padding-bottom: 100px;
-        margin-bottom: -100px;
-      }
-      
-      nav {
-        display: none;
+      h1, nav {
         position: relative;
         margin: 0;
       }
     }
     
     #traits {
-      margin-top: $site-padding + $name-height + 10px;
-      margin-left: $site-padding + $header-side-width;
-      margin-right: $site-padding;
-      padding-left: $gutter-width;
-      width: $site-width - $header-side-width - $gutter-width - 2 * $site-padding;
+      margin: 0;
+      right: $site-padding;
       
       background-color: white;
       
@@ -161,14 +152,61 @@ body {
     }
   }
   
-  @media (orientation: landscape) {
-    $wide-site-width: 720px;
+  // Devices with a screen at most 370px wide, in portrait, such as iPhones
+  @media (max-device-width: 370px) and (orientation: portrait) {
+    $header-side-width: 100px; // Approximate width of first name
+    $gutter-width:      10px;
+  
+    body {
+      header {
+        width: auto;
+      
+        text-align: left;
+
+        h1 {
+          // Workaround for MobileSafari rendering glitch.
+          // When scrolling down from the top, the "Maan" part of the header 
+          // would only be hidden after the touch ended.
+          padding-bottom: 100px;
+          margin-bottom: -100px;
+        }
+      
+        nav {
+          display: none;
+        }
+      }
+    
+      #traits {
+        margin-top: $site-padding + $name-height + 10px;
+        margin-left: $site-padding + $header-side-width;
+        padding-left: $gutter-width;
+      }
+    }
+  }
+  
+  // Devices with a screen at most 370px wide, in landscape, such as iPhones; or
+  // Devices with a screen at least 371px (and at most 600px) wide, such as larger smartphones
+  @media (max-device-width: 370px) and (orientation: landscape), (min-device-width: 371px) {
+    $header-side-width: 190px; // Approximate width of full name
+    $gutter-width:      10px;
     
     body {
-      width: $wide-site-width;
-
-      header, #traits {
-        left: ($wide-site-width - $site-width) / 2;
+      header {        
+        width: $header-side-width;
+        
+        text-align: right;
+          
+        nav {
+          display: block;
+          position: relative;
+          left: 0;
+        }
+      }
+      
+      #traits {
+        margin-top: $site-padding;
+        margin-left: $site-padding + $header-side-width;
+        padding-left: $gutter-width;
       }
     }
   }

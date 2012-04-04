@@ -109,7 +109,7 @@
 
     PersonalSite.prototype._focusCenterFromWindowTop = function() {
       if (navigator.userAgent.match(/(iPhone|iPod)/)) {
-        return $("header").outerHeight(true) / 2;
+        return parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2);
       } else {
         return $(window).height() / 2;
       }

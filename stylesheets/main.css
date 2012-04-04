@@ -29,7 +29,8 @@ body {
       position: absolute;
       top: 50%;
       right: 0;
-      margin-top: 20px; }
+      margin-top: 20px;
+      font-size: 16px; }
       body header nav ul {
         width: 100%;
         list-style: none; }
@@ -62,34 +63,46 @@ body {
   body header nav li span:first-child, body #traits h2 span:first-child, body #traits li span:first-child {
     display: none; }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {
-    width: 480px; }
+    width: 100%;
+    -webkit-text-size-adjust: none; }
     body header {
       bottom: auto;
       padding: 10px;
-      width: 460px;
-      text-align: left; }
-      body header h1 {
-        position: relative;
-        margin: 0;
-        padding-bottom: 100px;
-        margin-bottom: -100px; }
-      body header nav {
-        display: none;
+      padding-right: 0;
+      padding-bottom: 0; }
+      body header h1, body header nav {
         position: relative;
         margin: 0; }
     body #traits {
-      margin-top: 60px;
-      margin-left: 110px;
-      margin-right: 10px;
-      padding-left: 10px;
-      width: 350px;
+      margin: 0;
+      right: 10px;
       background-color: white; }
       body #traits section h2 {
         margin: 0 !important; } }
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (orientation: landscape) {
-  body {
-    width: 720px; }
-    body header, body #traits {
-      left: 120px; } }
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: portrait) {
+  body header {
+    width: auto;
+    text-align: left; }
+    body header h1 {
+      padding-bottom: 100px;
+      margin-bottom: -100px; }
+    body header nav {
+      display: none; }
+  body #traits {
+    margin-top: 60px;
+    margin-left: 110px;
+    padding-left: 10px; } }
+@media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: landscape), only screen and (min-device-width: 320px) and (max-device-width: 600px) and (min-device-width: 371px) {
+  body header {
+    width: 190px;
+    text-align: right; }
+    body header nav {
+      display: block;
+      position: relative;
+      left: 0; }
+  body #traits {
+    margin-top: 10px;
+    margin-left: 200px;
+    padding-left: 10px; } }
