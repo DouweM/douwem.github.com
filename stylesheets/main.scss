@@ -108,7 +108,7 @@ body {
   }
   
   header nav li, #traits h2, #traits li {
-    span {
+    span:first-child {
       display: none;
     }
   }

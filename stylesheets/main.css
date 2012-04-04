@@ -59,7 +59,7 @@ body {
         margin-top: -20px; }
       body #traits section:last-child {
         margin-bottom: 0; }
-  body header nav li span, body #traits h2 span, body #traits li span {
+  body header nav li span:first-child, body #traits h2 span:first-child, body #traits li span:first-child {
     display: none; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
