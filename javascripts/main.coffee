@@ -8,7 +8,7 @@ class PersonalSite
   
     $("header nav a").on "click",     @handleNavLinkClick
   
-    $("h2, ul li", $("section")).on "click", (event) => @focusOnEl event.target
+    $("section h2").on "click",       (event) => @focusOnEl event.target
   
   setLastSectionMarginBottom: =>
     lastSection = $("#traits section").last()

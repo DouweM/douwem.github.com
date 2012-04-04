@@ -14,7 +14,7 @@
       $(window).on("orientationchange", this.setLastSectionMarginBottom);
       $(window).on("keydown", this.handleKeyDown);
       $("header nav a").on("click", this.handleNavLinkClick);
-      $("h2, ul li", $("section")).on("click", function(event) {
+      $("section h2").on("click", function(event) {
         return _this.focusOnEl(event.target);
       });
     }
