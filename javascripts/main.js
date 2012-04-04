@@ -1,5 +1,5 @@
 (function() {
-  var currentlyCenteredEl, handleKeyDown, handleNavLinkClick, setLastSectionMarginBottom, verticallyCenterTextEl;
+  var currentlyFocusedEl, focusCenterFromWindowTop, focusOnEl, handleKeyDown, handleNavLinkClick, realWindowHeight, setLastSectionMarginBottom;
 
   $(document).ready(function() {
     setLastSectionMarginBottom();
@@ -10,34 +10,30 @@
   });
 
   setLastSectionMarginBottom = function() {
-    var lastCenterable, lastSection, lastSectionMarginBottom;
+    var lastFocusable, lastSection, lastSectionMarginBottom;
     lastSection = $("#traits section").last();
-    lastCenterable = $("h2, ul li", lastSection).last();
-    if (navigator.userAgent.match(/(iPhone|iPod)/)) {
-      lastSectionMarginBottom = window.innerHeight - (lastCenterable.outerHeight() / 2) - ($("header").outerHeight(true) / 2);
-    } else {
-      lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2);
-    }
+    lastFocusable = $("h2, ul li", lastSection).last();
+    lastSectionMarginBottom = realWindowHeight() - (focusCenterFromWindowTop() + (lastFocusable.outerHeight() / 2));
     return lastSection.css("margin-bottom", Math.ceil(lastSectionMarginBottom));
   };
 
   handleNavLinkClick = function(event) {
-    var firstCenterable, href, link, section;
+    var firstFocusable, href, link, section;
     event.preventDefault();
     link = $(event.target);
     href = link.attr("href");
     section = $(href);
-    firstCenterable = $("h2, ul li", section).first();
-    return verticallyCenterTextEl(firstCenterable);
+    firstFocusable = $("h2, ul li", section).first();
+    return focusOnEl(firstFocusable);
   };
 
   handleKeyDown = function(event) {
-    var centerableEls, centeredEl, centeredElIndex, link, otherEl, otherIndex, url;
+    var focusableEls, focusedEl, focusedElIndex, link, otherEl, otherIndex, url;
     switch (event.which) {
       case 13:
         event.preventDefault();
-        centeredEl = currentlyCenteredEl();
-        link = $("a", centeredEl);
+        focusedEl = currentlyFocusedEl();
+        link = $("a", focusedEl);
         if (link.length) {
           url = link.attr("href");
           if (link.attr("target") === "_blank") {
@@ -52,45 +48,61 @@
         if (event.metaKey) return;
         event.preventDefault();
         if (event.altKey) {
-          centerableEls = $("h2, ul:first-child li:first-child", $("section"));
+          focusableEls = $("h2, ul:first-child li:first-child", $("section"));
         } else {
-          centerableEls = $("h2, ul li", $("section"));
+          focusableEls = $("h2, ul li", $("section"));
         }
-        centeredEl = currentlyCenteredEl(centerableEls);
-        centeredElIndex = centerableEls.index(centeredEl);
-        otherIndex = event.which === 38 ? centeredElIndex - 1 : centeredElIndex + 1;
-        if (!((0 <= otherIndex && otherIndex < centerableEls.length))) return;
-        otherEl = centerableEls.eq(otherIndex);
-        return verticallyCenterTextEl(otherEl);
+        focusedEl = currentlyFocusedEl(focusableEls);
+        focusedElIndex = focusableEls.index(focusedEl);
+        otherIndex = event.which === 38 ? focusedElIndex - 1 : focusedElIndex + 1;
+        if (!((0 <= otherIndex && otherIndex < focusableEls.length))) return;
+        otherEl = focusableEls.eq(otherIndex);
+        return focusOnEl(otherEl);
     }
   };
 
-  verticallyCenterTextEl = function(el) {
-    var elCenter, windowCenter;
-    elCenter = el.offset().top + (el.outerHeight() / 2);
-    windowCenter = $(window).height() / 2;
-    return $(window).scrollTop(Math.ceil(elCenter - windowCenter));
+  focusOnEl = function(focusableEl) {
+    var focusableCenter;
+    focusableEl = $(focusableEl);
+    focusableCenter = focusableEl.offset().top + (focusableEl.outerHeight() / 2);
+    return $(window).scrollTop(Math.ceil(focusableCenter - focusCenterFromWindowTop()));
   };
 
-  currentlyCenteredEl = function(centerableEls) {
-    var centeredEl, el, elTop, lastElTop, offset, scrollCenter, _i, _len;
-    if (centerableEls == null) centerableEls = $("h2, ul li", $("section"));
-    centerableEls = $(centerableEls.get().reverse());
-    scrollCenter = $(window).scrollTop() + ($(window).height() / 2);
-    centeredEl = null;
+  currentlyFocusedEl = function(focusableEls) {
+    var el, elTop, focusedEl, lastElTop, offset, scrolledFocusCenter, _i, _len;
+    if (focusableEls == null) focusableEls = $("h2, ul li", $("section"));
+    focusableEls = $(focusableEls.get().reverse());
+    scrolledFocusCenter = $(window).scrollTop() + focusCenterFromWindowTop();
+    focusedEl = null;
     lastElTop = 10000;
-    for (_i = 0, _len = centerableEls.length; _i < _len; _i++) {
-      el = centerableEls[_i];
+    for (_i = 0, _len = focusableEls.length; _i < _len; _i++) {
+      el = focusableEls[_i];
       el = $(el);
       offset = el.offset();
       elTop = offset.top;
-      if ((elTop <= scrollCenter && scrollCenter <= lastElTop)) {
-        centeredEl = el;
+      if ((elTop <= scrolledFocusCenter && scrolledFocusCenter <= lastElTop)) {
+        focusedEl = el;
         break;
       }
       lastElTop = elTop;
     }
-    return centeredEl || centerableEls.last();
+    return focusedEl || focusableEls.last();
+  };
+
+  realWindowHeight = function() {
+    if (navigator.userAgent.match(/(iPhone|iPod)/)) {
+      return window.innerHeight;
+    } else {
+      return $(window).height();
+    }
+  };
+
+  focusCenterFromWindowTop = function() {
+    if (navigator.userAgent.match(/(iPhone|iPod)/)) {
+      return $("header").outerHeight(true) / 2;
+    } else {
+      return $(window).height() / 2;
+    }
   };
 
 }).call(this);

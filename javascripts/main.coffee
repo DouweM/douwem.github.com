@@ -9,14 +9,8 @@ $(document).ready ->
   
 setLastSectionMarginBottom = ->  
   lastSection = $("#traits section").last()
-  lastCenterable = $("h2, ul li", lastSection).last()
-  
-  if navigator.userAgent.match /(iPhone|iPod)/
-    # $(window).height() != window.innerHeight on iPhone
-    # See http://bugs.jquery.com/ticket/6724
-    lastSectionMarginBottom = window.innerHeight - (lastCenterable.outerHeight() / 2) - ($("header").outerHeight(true) / 2)
-  else
-    lastSectionMarginBottom = ($(window).height() / 2) - (lastCenterable.outerHeight() / 2)
+  lastFocusable = $("h2, ul li", lastSection).last()
+  lastSectionMarginBottom = realWindowHeight() - (focusCenterFromWindowTop() + (lastFocusable.outerHeight() / 2))
 
   lastSection.css "margin-bottom", Math.ceil(lastSectionMarginBottom)
 
@@ -26,17 +20,17 @@ handleNavLinkClick = (event) ->
   link    = $(event.target)
   href    = link.attr "href"
   section = $(href)
-  firstCenterable = $("h2, ul li", section).first()
+  firstFocusable = $("h2, ul li", section).first()
   
-  verticallyCenterTextEl firstCenterable
+  focusOnEl firstFocusable
   
 handleKeyDown = (event) ->
   switch event.which
     when 13 # Enter
       event.preventDefault()
       
-      centeredEl = currentlyCenteredEl()
-      link = $("a", centeredEl)
+      focusedEl = currentlyFocusedEl()
+      link = $("a", focusedEl)
       
       if link.length
         url = link.attr "href"
@@ -51,40 +45,54 @@ handleKeyDown = (event) ->
       event.preventDefault()
   
       if event.altKey # Scroll up/down one section 
-        centerableEls = $("h2, ul:first-child li:first-child", $("section"))
+        focusableEls = $("h2, ul:first-child li:first-child", $("section"))
       else # Scroll up/down one line
-        centerableEls = $("h2, ul li", $("section"))
+        focusableEls = $("h2, ul li", $("section"))
 
-      centeredEl = currentlyCenteredEl centerableEls
-      centeredElIndex = centerableEls.index centeredEl
+      focusedEl = currentlyFocusedEl focusableEls
+      focusedElIndex = focusableEls.index focusedEl
   
-      otherIndex = if event.which == 38 then centeredElIndex - 1 else centeredElIndex + 1
-      return unless 0 <= otherIndex < centerableEls.length
+      otherIndex = if event.which == 38 then focusedElIndex - 1 else focusedElIndex + 1
+      return unless 0 <= otherIndex < focusableEls.length
   
-      otherEl = centerableEls.eq otherIndex
-      verticallyCenterTextEl otherEl
+      otherEl = focusableEls.eq otherIndex
+      focusOnEl otherEl
 
-verticallyCenterTextEl = (el) ->    
-  elCenter = el.offset().top + (el.outerHeight() / 2)
-  windowCenter = $(window).height() / 2
+focusOnEl = (focusableEl) ->  
+  focusableEl = $(focusableEl)
+  focusableCenter = focusableEl.offset().top + (focusableEl.outerHeight() / 2)
   
-  $(window).scrollTop Math.ceil(elCenter - windowCenter)
+  $(window).scrollTop Math.ceil(focusableCenter - focusCenterFromWindowTop())
 
-currentlyCenteredEl = (centerableEls = $("h2, ul li", $("section"))) ->
-  # Reverse centerableEls
-  centerableEls = $(centerableEls.get().reverse())
+currentlyFocusedEl = (focusableEls = $("h2, ul li", $("section"))) ->
+  # Reverse focusableEls
+  focusableEls = $(focusableEls.get().reverse())
   
-  scrollCenter = $(window).scrollTop() + ($(window).height() / 2)
+  scrolledFocusCenter = $(window).scrollTop() + focusCenterFromWindowTop()
   
-  centeredEl = null
+  focusedEl = null
   lastElTop = 10000 # Arbitrary large number
-  for el in centerableEls
+  for el in focusableEls
     el = $(el)
     offset = el.offset()
     elTop = offset.top
-    if elTop <= scrollCenter <= lastElTop
-      centeredEl = el
+    if elTop <= scrolledFocusCenter <= lastElTop
+      focusedEl = el
       break
     lastElTop = elTop
   
-  centeredEl || centerableEls.last()
+  focusedEl || focusableEls.last()
+  
+realWindowHeight = ->  
+  # $(window).height() != window.innerHeight on iPhone
+  # See http://bugs.jquery.com/ticket/6724
+  if navigator.userAgent.match /(iPhone|iPod)/
+    window.innerHeight
+  else
+    $(window).height()
+    
+focusCenterFromWindowTop = ->  
+  if navigator.userAgent.match /(iPhone|iPod)/
+    ($("header").outerHeight(true) / 2)
+  else
+    ($(window).height() / 2)
