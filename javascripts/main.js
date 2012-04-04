@@ -6,7 +6,10 @@
     $(window).on("resize", setLastSectionMarginBottom);
     $(window).on("orientationchange", setLastSectionMarginBottom);
     $(window).on("keydown", handleKeyDown);
-    return $("header nav a").on("click", handleNavLinkClick);
+    $("header nav a").on("click", handleNavLinkClick);
+    return $("h2, ul li", $("section")).on("click", function(event) {
+      return focusOnEl(event.target);
+    });
   });
 
   setLastSectionMarginBottom = function() {

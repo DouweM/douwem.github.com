@@ -7,6 +7,8 @@ $(document).ready ->
   
   $("header nav a").on "click",     handleNavLinkClick
   
+  $("h2, ul li", $("section")).on "click", (event) -> focusOnEl event.target
+  
 setLastSectionMarginBottom = ->  
   lastSection = $("#traits section").last()
   lastFocusable = $("h2, ul li", lastSection).last()
