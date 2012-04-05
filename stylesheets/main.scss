@@ -116,6 +116,12 @@ body {
       display: none;
     }
   }
+  
+  #traits h2, #traits li {
+    span.details {
+      font-style: italic;
+    }
+  }
 }
 
 // Devices with a screen at least 320px and at most 600px wide, such as smartphones
