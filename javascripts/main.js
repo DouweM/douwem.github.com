@@ -20,17 +20,18 @@
     }
 
     PersonalSite.prototype.setLastSectionMarginBottom = function() {
-      var lastFocusable, lastSection, lastSectionMarginBottom;
+      var lastFocusable, lastFocusableBottom, lastSection, lastSectionMarginBottom;
       lastSection = $("#traits section").last();
       lastFocusable = $("h2, ul li", lastSection).last();
-      lastSectionMarginBottom = this._realWindowHeight() - (this._focusCenterFromWindowTop() + (lastFocusable.outerHeight() / 2));
+      lastFocusableBottom = this._focusCenterFromWindowTop() - this._focusableCenterForElement(lastFocusable) + lastFocusable.outerHeight();
+      lastSectionMarginBottom = this._realWindowHeight() - lastFocusableBottom;
       return lastSection.css("margin-bottom", Math.ceil(lastSectionMarginBottom));
     };
 
     PersonalSite.prototype.focusOnEl = function(focusableEl) {
       var focusableCenter;
       focusableEl = $(focusableEl);
-      focusableCenter = focusableEl.offset().top + (focusableEl.outerHeight() / 2);
+      focusableCenter = focusableEl.offset().top + this._focusableCenterForElement(focusableEl);
       return $(window).scrollTop(Math.ceil(focusableCenter - this._focusCenterFromWindowTop()));
     };
 
@@ -113,6 +114,10 @@
       } else {
         return $(window).height() / 2;
       }
+    };
+
+    PersonalSite.prototype._focusableCenterForElement = function(focusableEl) {
+      return parseInt(focusableEl.css("padding-top")) + (parseInt(focusableEl.css("line-height")) / 2);
     };
 
     return PersonalSite;

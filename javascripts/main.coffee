@@ -13,13 +13,14 @@ class PersonalSite
   setLastSectionMarginBottom: =>
     lastSection = $("#traits section").last()
     lastFocusable = $("h2, ul li", lastSection).last()
-    lastSectionMarginBottom = @_realWindowHeight() - (@_focusCenterFromWindowTop() + (lastFocusable.outerHeight() / 2))
+    lastFocusableBottom = @_focusCenterFromWindowTop() - @_focusableCenterForElement(lastFocusable) + lastFocusable.outerHeight()
+    lastSectionMarginBottom = @_realWindowHeight() - lastFocusableBottom
 
     lastSection.css "margin-bottom", Math.ceil(lastSectionMarginBottom)
 
   focusOnEl: (focusableEl) ->  
     focusableEl = $(focusableEl)
-    focusableCenter = focusableEl.offset().top + (focusableEl.outerHeight() / 2)
+    focusableCenter = focusableEl.offset().top + @_focusableCenterForElement(focusableEl)
   
     $(window).scrollTop Math.ceil(focusableCenter - @_focusCenterFromWindowTop())
 
@@ -101,6 +102,9 @@ class PersonalSite
       parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2)
     else
       ($(window).height() / 2)    
+  
+  _focusableCenterForElement: (focusableEl) ->
+    parseInt(focusableEl.css("padding-top")) + (parseInt(focusableEl.css("line-height")) / 2)
 
 $(document).ready ->
   window.personalSite = new PersonalSite
