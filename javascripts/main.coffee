@@ -1,4 +1,6 @@
 class PersonalSite
+  isSmartphone: window.matchMedia("only screen and (min-device-width: 320px) and (max-device-width: 600px)").matches
+  
   constructor: ->
     @setLastSectionMarginBottom()
     $(window).on "resize",            @setLastSectionMarginBottom
@@ -92,13 +94,13 @@ class PersonalSite
   _realWindowHeight: ->  
     # $(window).height() != window.innerHeight on iPhone
     # See http://bugs.jquery.com/ticket/6724
-    if navigator.userAgent.match /(iPhone|iPod)/
+    if @isSmartphone
       window.innerHeight
     else
       $(window).height()
     
   _focusCenterFromWindowTop: ->  
-    if navigator.userAgent.match /(iPhone|iPod)/
+    if @isSmartphone
       parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2)
     else
       ($(window).height() / 2)    

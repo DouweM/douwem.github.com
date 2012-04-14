@@ -4,6 +4,8 @@
 
   PersonalSite = (function() {
 
+    PersonalSite.prototype.isSmartphone = window.matchMedia("only screen and (min-device-width: 320px) and (max-device-width: 600px)").matches;
+
     function PersonalSite() {
       this.handleKeyDown = __bind(this.handleKeyDown, this);
       this.handleNavLinkClick = __bind(this.handleNavLinkClick, this);
@@ -101,7 +103,7 @@
     };
 
     PersonalSite.prototype._realWindowHeight = function() {
-      if (navigator.userAgent.match(/(iPhone|iPod)/)) {
+      if (this.isSmartphone) {
         return window.innerHeight;
       } else {
         return $(window).height();
@@ -109,7 +111,7 @@
     };
 
     PersonalSite.prototype._focusCenterFromWindowTop = function() {
-      if (navigator.userAgent.match(/(iPhone|iPod)/)) {
+      if (this.isSmartphone) {
         return parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2);
       } else {
         return $(window).height() / 2;
