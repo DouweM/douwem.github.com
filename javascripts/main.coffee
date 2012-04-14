@@ -16,7 +16,7 @@ class PersonalSite
     lastSection = $("#traits section").last()
     lastFocusable = $("h2, ul li", lastSection).last()
     lastFocusableBottom = @_focusCenterFromWindowTop() - @_focusableCenterForElement(lastFocusable) + lastFocusable.outerHeight()
-    lastSectionMarginBottom = @_realWindowHeight() - lastFocusableBottom
+    lastSectionMarginBottom = window.innerHeight - lastFocusableBottom
 
     lastSection.css "margin-bottom", Math.ceil(lastSectionMarginBottom)
 
@@ -90,20 +90,12 @@ class PersonalSite
         otherEl = focusableEls.eq otherIndex
         @focusOnEl otherEl
   
-  # Private
-  _realWindowHeight: ->  
-    # $(window).height() != window.innerHeight on iPhone
-    # See http://bugs.jquery.com/ticket/6724
-    if @isSmartphone
-      window.innerHeight
-    else
-      $(window).height()
-    
+  # Private    
   _focusCenterFromWindowTop: ->  
     if @isSmartphone
       parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2)
     else
-      ($(window).height() / 2)    
+      (window.innerHeight / 2)    
   
   _focusableCenterForElement: (focusableEl) ->
     parseInt(focusableEl.css("padding-top")) + (parseInt(focusableEl.css("line-height")) / 2)

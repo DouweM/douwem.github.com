@@ -26,7 +26,7 @@
       lastSection = $("#traits section").last();
       lastFocusable = $("h2, ul li", lastSection).last();
       lastFocusableBottom = this._focusCenterFromWindowTop() - this._focusableCenterForElement(lastFocusable) + lastFocusable.outerHeight();
-      lastSectionMarginBottom = this._realWindowHeight() - lastFocusableBottom;
+      lastSectionMarginBottom = window.innerHeight - lastFocusableBottom;
       return lastSection.css("margin-bottom", Math.ceil(lastSectionMarginBottom));
     };
 
@@ -102,19 +102,11 @@
       }
     };
 
-    PersonalSite.prototype._realWindowHeight = function() {
-      if (this.isSmartphone) {
-        return window.innerHeight;
-      } else {
-        return $(window).height();
-      }
-    };
-
     PersonalSite.prototype._focusCenterFromWindowTop = function() {
       if (this.isSmartphone) {
         return parseInt($("header").css("padding-top")) + (parseInt($("header h1").css("line-height")) / 2);
       } else {
-        return $(window).height() / 2;
+        return window.innerHeight / 2;
       }
     };
 
