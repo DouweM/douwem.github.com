@@ -430,13 +430,8 @@ item2.X-ABLabel:GitHub
 X-SOCIALPROFILE;type=twitter:http://twitter.com/DouweM
 X-TWITTER;type=HOME:DouweM
 
-X-GOOGLETALK;type=HOME:douwe@selenight.nl
-X-AIM;type=HOME:douwe@selenight.nl
 X-SKYPE;type=HOME:douwemaan
 X-SKYPE-USERNAME;type=HOME:douwemaan
-
-IMPP;X-SERVICE-TYPE=GoogleTalk;type=HOME;type=pref:xmpp:douwe@selenight.nl
-IMPP;X-SERVICE-TYPE=AIM;type=HOME:aim:douwe@selenight.nl
 IMPP;X-SERVICE-TYPE=Skype;type=HOME:skype:douwemaan
 
 END:VCARD
