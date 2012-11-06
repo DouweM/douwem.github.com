@@ -1,10 +1,11 @@
+@import url("http://fonts.googleapis.com/css?family=PT+Sans:400,700");
 * {
   margin: 0;
   padding: 0;
   border: 0; }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; }
   body a {
     color: #0046AA;
     text-decoration: none; }
@@ -53,7 +54,7 @@ body {
         list-style: none; }
         body #traits section ul li {
           padding: 11px 0 9px 0;
-          line-height: 25px;
+          line-height: 26px;
           font-size: 20px; }
       body #traits section:first-child h2 {
         margin-top: -20px; }
@@ -94,8 +95,8 @@ body {
       display: none; }
   body #traits {
     margin-top: 60px;
-    margin-left: 110px;
-    padding-left: 10px; } }
+    margin-left: 102px;
+    padding-left: 5px; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: landscape), only screen and (min-device-width: 320px) and (max-device-width: 600px) and (min-device-width: 371px) {
   body header {
     width: 190px;

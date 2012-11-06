@@ -7,8 +7,10 @@ $name-height:     $name-font-size + 10px;
 $nav-font-size:   16px;
 
 $trait-font-size: 20px;
-$trait-height:    $trait-font-size + 5px;
+$trait-height:    $trait-font-size + 6px;
 $trait-padding:   11px 0 9px 0;
+
+@import url("http://fonts.googleapis.com/css?family=PT+Sans:400,700");
 
 * {
   margin: 0;
@@ -17,7 +19,7 @@ $trait-padding:   11px 0 9px 0;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "PT Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   
   a {
     color: #0046AA;
@@ -160,8 +162,8 @@ body {
   
   // Devices with a screen at most 370px wide, in portrait, such as iPhones
   @media (max-device-width: 370px) and (orientation: portrait) {
-    $header-side-width: 100px; // Approximate width of first name
-    $gutter-width:      10px;
+    $header-side-width: 92px; // Approximate width of first name
+    $gutter-width:      5px;
   
     body {
       header {
