@@ -55,15 +55,21 @@ body {
         body #traits section ul li {
           padding: 11px 0 9px 0;
           line-height: 26px;
+          height: 26px;
           font-size: 20px; }
       body #traits section:first-child h2 {
         margin-top: -20px; }
       body #traits section:last-child {
         margin-bottom: 0; }
-  body header nav li span:first-child, body #traits h2 span:first-child, body #traits li span:first-child {
+  body header nav li span, body #traits h2 span {
+    display: none; }
+  body #traits li > span:first-child {
     display: none; }
   body #traits h2 span.details, body #traits li span.details {
+    font-size: 0.9em;
     font-style: italic; }
+  body #traits h2 strong span.details, body #traits li strong span.details {
+    font-style: normal; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {
@@ -83,7 +89,9 @@ body {
       right: 10px;
       background-color: white; }
       body #traits section h2 {
-        margin: 0 !important; } }
+        margin: 0 !important; }
+      body #traits section li {
+        height: auto; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: portrait) {
   body header {
     width: auto;

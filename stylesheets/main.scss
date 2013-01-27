@@ -93,6 +93,7 @@ body {
         li {
           padding: $trait-padding;
           line-height: $trait-height;
+          height: $trait-height;
           
           font-size: $trait-font-size;
           
@@ -112,15 +113,24 @@ body {
     }
   }
   
-  header nav li, #traits h2, #traits li {
-    span:first-child {
+  header nav li, #traits h2 {
+    span {
       display: none;
     }
+  }
+
+  #traits li > span:first-child {
+    display: none;
   }
   
   #traits h2, #traits li {
     span.details {
+      font-size: 0.9em;
       font-style: italic;
+    }
+
+    strong span.details {
+      font-style: normal;
     }
   }
 }
@@ -155,6 +165,10 @@ body {
       section {
         h2 {
           margin: 0 !important;
+        }
+
+        li {
+          height: auto;
         }
       }
     }
