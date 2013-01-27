@@ -96,10 +96,6 @@ body {
           height: $trait-height;
           
           font-size: $trait-font-size;
-          
-          a {
-            
-          }
         }
       }
       
@@ -124,12 +120,12 @@ body {
   }
   
   #traits h2, #traits li {
-    span.details {
+    small {
       font-size: 0.9em;
       font-style: italic;
     }
 
-    strong span.details {
+    strong small {
       font-style: normal;
     }
   }
