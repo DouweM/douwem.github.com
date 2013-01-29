@@ -91,7 +91,7 @@ body {
       body #traits section h2 {
         margin: 0 !important; }
       body #traits section li {
-        height: auto; } }
+        height: auto !important; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: portrait) {
   body header {
     width: auto;
