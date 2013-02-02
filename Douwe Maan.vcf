@@ -417,6 +417,7 @@ LOGO;BASE64:
   
 N:Maan;Douwe
 FN:Douwe Maan
+ORG:Toopia Ltd
 
 EMAIL;type=INTERNET;type=HOME:douwe@selenight.nl
 TEL;type=CELL;type=pref:+31 6 817 647 33
@@ -426,6 +427,7 @@ item1.URL:https://twitter.com/DouweM
 item1.X-ABLabel:twitter
 item2.URL:https://github.com/DouweM
 item2.X-ABLabel:GitHub
+URL;type=WORK:http://www.toopia.com
 
 X-SOCIALPROFILE;type=twitter:http://twitter.com/DouweM
 X-TWITTER;type=HOME:DouweM
