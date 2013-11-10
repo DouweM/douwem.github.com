@@ -63,7 +63,7 @@ body {
         margin-bottom: 0; }
   body header nav li span, body #traits h2 span {
     display: none; }
-  body #traits li > span:first-child {
+  body #traits li span.name {
     display: none; }
   body #traits h2 small, body #traits li small {
     font-size: 0.9em;

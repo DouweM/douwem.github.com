@@ -3,61 +3,72 @@ layout: default
 ---
 
 <header>
-  <h1>Douwe Maan</h1>
+  <span id="douwemaan">
+    <meta itemprop="gender" content="Male" />
+
+    <h1 itemprop="name">
+      <span itemprop="givenName">Douwe</span>
+      <span itemprop="familyName">Maan</span>
+    </h1>
+  </span>
 
   <nav>
     <ul>
       <li>
         <a href="#person">
-          <span>Douwe Maan</span> is a person
+          <span class="name">Douwe Maan</span> is a person
         </a>
       </li>
     
       <li>
         <a href="#developer">
-          <span>Douwe Maan</span> is a developer
+          <span class="name">Douwe Maan</span> is a developer
         </a>
       </li>
     
       <li>
         <a href="#professional">
-          <span>Douwe Maan</span> is a professional
+          <span class="name">Douwe Maan</span> is a professional
         </a>
       </li>
     
       <li>
         <a href="#social">
-          <span>Douwe Maan</span> is social
+          <span class="name">Douwe Maan</span> is social
         </a>
       </li>
     </ul>
   </nav>
 </header>
 
-<div id="traits">
+<div id="traits" itemscope itemtype="http://schema.org/Person" itemref="douwemaan">
   <section id="person">
     <h2><span>Douwe Maan</span> is a person</h2>
   
     <ul>
       <li>
-        <span>Douwe Maan</span> was born 19 years ago on January 1st
+        <span class="name">Douwe Maan</span> was born 19 years ago on 
+        <time itemprop="birthDate" datetime="1994-01-01">January 1st</time>
+      </li>
+    
+      <li itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+        <span class="name">Douwe Maan</span> lives in 
+        <span itemprop="addressLocality">Utrecht</span>, 
+        <span itemprop="addressCountry">the Netherlands</span>
+      </li>
+    
+      <li itemprop="affiliation" itemscope itemtype="http://schema.org/CollegeOrUniversity">
+        <span class="name">Douwe Maan</span> studies Computer Science at 
+        <span itemprop="name">Utrecht University</span>
       </li>
     
       <li>
-        <span>Douwe Maan</span> lives in Utrecht, the Netherlands
-      </li>
-    
-      <li>
-        <span>Douwe Maan</span> studies Computer Science at Utrecht University
-      </li>
-    
-      <li>
-        <span>Douwe Maan</span> watches 
+        <span class="name">Douwe Maan</span> watches 
         <a href="http://followmy.tv/u/DouweM/following" target="_blank">a bunch of TV shows</a>
       </li>
     
       <li>
-        <span>Douwe Maan</span> is a fan of Apple products
+        <span class="name">Douwe Maan</span> is a fan of Apple products
       </li>
     </ul>
   </section>
@@ -67,32 +78,32 @@ layout: default
   
     <ul>
       <li>
-        <span>Douwe Maan</span> develops iOS, Mac and web applications
+        <span class="name">Douwe Maan</span> develops iOS, Mac and web applications
       </li>
     
       <li>
-        <span>Douwe Maan</span> has been programming from the age of 9
+        <span class="name">Douwe Maan</span> has been programming from the age of 9
       </li>
     
       <li>
-        <span>Douwe Maan</span> writes 
+        <span class="name">Douwe Maan</span> writes 
         <strong>Ruby and Rails</strong>
         in lightning speed
       </li>
     
       <li>
-        <span>Douwe Maan</span> is a fluent speaker of
+        <span class="name">Douwe Maan</span> is a fluent speaker of
         <strong>Objective-C and Cocoa (Touch)</strong>
       </li>
     
       <li>
-        <span>Douwe Maan</span> knows 
+        <span class="name">Douwe Maan</span> knows 
         <strong>JavaScript, HTML and CSS</strong>
         like the back of his hand
       </li>
 
       <li>
-        <span>Douwe Maan</span> has dabbled in
+        <span class="name">Douwe Maan</span> has dabbled in
         <strong>
           Java <small>(Android)</small>, 
           C# <small>(.NET)</small>, 
@@ -109,19 +120,35 @@ layout: default
   
     <ul>
       <li>
-        <span>Douwe Maan</span> co-founded Toopia and is lead developer of
-        <a href="http://www.stinngo.com/" target="_blank">Stinngo</a>
+        <span itemprop="worksFor" itemscope itemtype="http://schema.org/Corporation">
+          <meta itemprop="legalName" content="Toopia BV" />
+          <meta itemprop="founder" itemscope itemtype="http://schema.org/Person" itemref="douwemaan" />
+
+          <span class="name">Douwe Maan</span> co-founded
+          <a href="http://www.toopia.com/" target="_blank" itemprop="url">
+            <span itemprop="name">Toopia</span>
+          </a>
+        </span>
+        and is 
+
+        <span itemprop="jobTitle">lead developer</span> of
+        <span itemscope itemtype="http://schema.org/Product">
+          <a href="http://www.stinngo.com/" target="_blank" itemprop="url">
+            <span itemprop="name">Stinngo</span>
+          </a>
+        </span>
+
         <small>(Jan 2012 to present)</small>
       </li>
       
       <li>
-        <span>Douwe Maan</span> built iOS and Mac apps at 
+        <span class="name">Douwe Maan</span> built iOS and Mac apps at 
         <a href="http://www.studiodalton.com/" target="_blank">StudioDalton</a>
         <small>(Jan 2011 to Aug 2012)</small>
       </li>
       
       <li>
-        <span>Douwe Maan</span> used to do freelance PHP web development
+        <span class="name">Douwe Maan</span> used to do freelance PHP web development
         <small>(2005 to 2010)</small>
       </li>
     </ul>
@@ -132,29 +159,31 @@ layout: default
   
     <ul>
       <li>
-        <span>Douwe Maan</span> tweets as 
+        <span class="name">Douwe Maan</span> tweets as 
         <a href="https://twitter.com/DouweM" target="_blank">@DouweM</a>
       </li>
       
       <li>
-        <span>Douwe Maan</span> shares code via 
+        <span class="name">Douwe Maan</span> shares code via 
         <a href="https://github.com/DouweM" target="_blank">github.com/DouweM</a>
       </li>
       
       <li>
-        <span>Douwe Maan</span> is always up for a Skype chat as 
+        <span class="name">Douwe Maan</span> is always up for a Skype chat as 
         <a href="skype:douwemaan?chat">douwemaan</a>
       </li>
       
       <li>
-        <span>Douwe Maan</span> reads mail sent to
+        <span class="name">Douwe Maan</span> reads mail sent to
         <a href="mailto:&#100;&#111;&#117;&#119;&#101;&#064;&#115;&#101;&#108;&#101;&#110;&#105;&#103;&#104;&#116;&#046;&#110;&#108;">
-          &#100;&#111;&#117;&#119;&#101;&#064;&#115;&#101;&#108;&#101;&#110;&#105;&#103;&#104;&#116;&#046;&#110;&#108;
+          <span itemprop="email">
+            &#100;&#111;&#117;&#119;&#101;&#064;&#115;&#101;&#108;&#101;&#110;&#105;&#103;&#104;&#116;&#046;&#110;&#108;
+          </span>
         </a>
       </li>
       
       <li>
-        <span>Douwe Maan</span> has prepared a
+        <span class="name">Douwe Maan</span> has prepared a
         <a href="/Douwe%20Maan.vcf">vCard</a>
         just for you
       </li>
@@ -164,13 +193,13 @@ layout: default
   <section>
     <ul>
       <li>
-        <span>Douwe Maan</span> hosts the 
+        <span class="name">Douwe Maan</span> hosts the 
         <a href="https://github.com/DouweM/douwem.github.com" target="_blank">source code</a>
         for this site on GitHub
       </li>
       
       <li>
-        <span>Douwe Maan</span> holds the copyright to this site from 2012 onwards
+        <span class="name">Douwe Maan</span> holds the copyright to this site from 2012 onwards
       </li>
     </ul>
   </section>
