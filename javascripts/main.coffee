@@ -70,20 +70,19 @@ class PersonalSite
             window.open url
           else
             window.location.href = url
-      
-      when 38, 40 # Up, Down
+      when 32, 38, 40 # Space, Up, Down
         return if event.metaKey # Don't handle if Windows or Command key was pressed
       
         event.preventDefault()
   
-        if event.altKey # Scroll up/down one section 
+        if event.altKey || event.which == 32 # Scroll up/down one section 
           focusableEls = $("h2, ul:first-child li:first-child", $("section"))
         else # Scroll up/down one line
           focusableEls = $("h2, ul li", $("section"))
 
         focusedEl = @currentlyFocusedEl focusableEls
         focusedElIndex = focusableEls.index focusedEl
-  
+
         otherIndex = if event.which == 38 then focusedElIndex - 1 else focusedElIndex + 1
         return unless 0 <= otherIndex < focusableEls.length
   

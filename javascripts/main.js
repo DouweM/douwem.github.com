@@ -84,11 +84,12 @@
             }
           }
           break;
+        case 32:
         case 38:
         case 40:
           if (event.metaKey) return;
           event.preventDefault();
-          if (event.altKey) {
+          if (event.altKey || event.which === 32) {
             focusableEls = $("h2, ul:first-child li:first-child", $("section"));
           } else {
             focusableEls = $("h2, ul li", $("section"));
