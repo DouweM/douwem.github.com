@@ -26,6 +26,11 @@ body {
       line-height: 40px;
       font-size: 30px;
       font-weight: bold; }
+      body header h1 a {
+        color: inherit; }
+        body header h1 a:hover {
+          text-decoration: none;
+          color: #0046AA; }
     body header nav {
       position: absolute;
       top: 50%;

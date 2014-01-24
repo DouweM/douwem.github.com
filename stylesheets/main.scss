@@ -48,6 +48,15 @@ body {
       
       font-size: $name-font-size;
       font-weight: bold;
+
+      a {
+        color: inherit;
+
+        &:hover {
+          text-decoration: none;
+          color: #0046AA;
+        }
+      }
     }
     
     nav {
