@@ -137,6 +137,13 @@ body {
     strong small {
       font-style: normal;
     }
+
+    span[title] {
+      display: inline-block;
+      line-height: 18px;
+      
+      border-bottom: 1px dashed black;
+    }
   }
 }
 

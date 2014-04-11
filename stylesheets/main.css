@@ -75,6 +75,10 @@ body {
     font-style: italic; }
   body #traits h2 strong small, body #traits li strong small {
     font-style: normal; }
+  body #traits h2 span[title], body #traits li span[title] {
+    display: inline-block;
+    line-height: 18px;
+    border-bottom: 1px dashed black; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {
