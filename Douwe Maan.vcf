@@ -417,17 +417,16 @@ LOGO;BASE64:
   
 N:Maan;Douwe
 FN:Douwe Maan
-ORG:Toopia BV
+ORG:GitLab
 
-EMAIL;type=INTERNET;type=HOME:douwe@selenight.nl
+EMAIL;type=INTERNET;type=HOME:hi@douwe.me
 TEL;type=CELL;type=pref:+31 6 817 647 33
 
-URL;type=HOME;type=pref:http://www.douwemaan.com
+URL;type=HOME;type=pref:http://www.douwe.me
 item1.URL:https://twitter.com/DouweM
 item1.X-ABLabel:twitter
 item2.URL:https://github.com/DouweM
 item2.X-ABLabel:GitHub
-URL;type=WORK:http://www.toopia.com
 
 X-SOCIALPROFILE;type=twitter:http://twitter.com/DouweM
 X-TWITTER;type=HOME:DouweM
