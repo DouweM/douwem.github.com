@@ -73,18 +73,24 @@ body {
         
         li {
           padding: 2px 0;
+
+          span {
+            display: none;
+          }
         }
       }
     }
   }
   
-  #traits {
+  .traits {
     position: absolute;
     left: 0;
     margin-left: $header-width;
     top: 50%;
     padding-left: $gutter-width;
     
+    text-align: left;
+
     section {
       position: relative;
       margin-bottom: 30px;
@@ -105,6 +111,10 @@ body {
           height: $trait-height;
           
           font-size: $trait-font-size;
+
+          span.name {
+            display: none; 
+          }
         }
       }
       
@@ -115,34 +125,28 @@ body {
       &:last-child {
         margin-bottom: 0;
       }
-    }
-  }
-  
-  header nav li, #traits h2 {
-    span {
-      display: none;
-    }
-  }
 
-  #traits li span.name {
-    display: none;
-  }
-  
-  #traits h2, #traits li {
-    small {
-      font-size: 0.9em;
-      font-style: italic;
-    }
+      h2, li {
+        span.name {
+          display: none;
+        }
 
-    strong small {
-      font-style: normal;
-    }
+        small {
+          font-size: 0.9em;
+          font-style: italic;
+        }
 
-    span[title] {
-      display: inline-block;
-      line-height: 18px;
-      
-      border-bottom: 1px dashed black;
+        strong small {
+          font-style: normal;
+        }
+
+        span[title] {
+          display: inline-block;
+          line-height: 18px;
+          
+          border-bottom: 1px dashed black;
+        }
+      }
     }
   }
 }
@@ -167,7 +171,7 @@ body {
       }
     }
     
-    #traits {
+    .traits {
       top: 0;
       margin: 0;
       right: $site-padding;
@@ -210,7 +214,7 @@ body {
         }
       }
     
-      #traits {
+      .traits {
         margin-top: $site-padding + $name-height + 10px;
         margin-left: $site-padding + $header-side-width;
         padding-left: $gutter-width;
@@ -237,7 +241,7 @@ body {
         }
       }
       
-      #traits {
+      .traits {
         margin-top: $site-padding;
         margin-left: $site-padding + $header-side-width;
         padding-left: $gutter-width;

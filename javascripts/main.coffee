@@ -13,7 +13,7 @@ class PersonalSite
     $("section h2").on "click",       (event) => @focusOnEl event.target
   
   setLastSectionMarginBottom: =>
-    lastSection = $("#traits section").last()
+    lastSection = $(".traits section").last()
     lastFocusable = $("h2, ul li", lastSection).last()
     lastFocusableBottom = @_focusCenterFromWindowTop() - @_focusableCenterForElement(lastFocusable) + lastFocusable.outerHeight()
     lastSectionMarginBottom = window.innerHeight - lastFocusableBottom
@@ -76,9 +76,9 @@ class PersonalSite
         event.preventDefault()
   
         if event.altKey || event.which == 32 # Scroll up/down one section 
-          focusableEls = $("h2, ul:first-child li:first-child", $("section"))
+          focusableEls = $("h2, ul:first-child li:first-child", $(".traits section"))
         else # Scroll up/down one line
-          focusableEls = $("h2, ul li", $("section"))
+          focusableEls = $("h2, ul li", $(".traits section"))
 
         focusedEl = @currentlyFocusedEl focusableEls
         focusedElIndex = focusableEls.index focusedEl
