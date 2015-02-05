@@ -42,43 +42,46 @@ body {
         list-style: none; }
         body header nav ul li {
           padding: 2px 0; }
-  body #traits {
+          body header nav ul li span {
+            display: none; }
+  body .traits {
     position: absolute;
     left: 0;
     margin-left: 40%;
     top: 50%;
-    padding-left: 10px; }
-    body #traits section {
+    padding-left: 10px;
+    text-align: left; }
+    body .traits section {
       position: relative;
       margin-bottom: 30px; }
-      body #traits section h2 {
+      body .traits section h2 {
         line-height: 40px;
         font-size: 30px;
         font-weight: bold; }
-      body #traits section ul {
+      body .traits section ul {
         list-style: none; }
-        body #traits section ul li {
+        body .traits section ul li {
           padding: 11px 0 9px 0;
           line-height: 26px;
           height: 26px;
           font-size: 20px; }
-      body #traits section:first-child h2 {
+          body .traits section ul li span.name {
+            display: none; }
+      body .traits section:first-child h2 {
         margin-top: -20px; }
-      body #traits section:last-child {
+      body .traits section:last-child {
         margin-bottom: 0; }
-  body header nav li span, body #traits h2 span {
-    display: none; }
-  body #traits li span.name {
-    display: none; }
-  body #traits h2 small, body #traits li small {
-    font-size: 0.9em;
-    font-style: italic; }
-  body #traits h2 strong small, body #traits li strong small {
-    font-style: normal; }
-  body #traits h2 span[title], body #traits li span[title] {
-    display: inline-block;
-    line-height: 18px;
-    border-bottom: 1px dashed black; }
+      body .traits section h2 span.name, body .traits section li span.name {
+        display: none; }
+      body .traits section h2 small, body .traits section li small {
+        font-size: 0.9em;
+        font-style: italic; }
+      body .traits section h2 strong small, body .traits section li strong small {
+        font-style: normal; }
+      body .traits section h2 span[title], body .traits section li span[title] {
+        display: inline-block;
+        line-height: 18px;
+        border-bottom: 1px dashed black; }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) {
   body {
@@ -92,14 +95,14 @@ body {
       body header h1, body header nav {
         position: relative;
         margin: 0; }
-    body #traits {
+    body .traits {
       top: 0;
       margin: 0;
       right: 10px;
       background-color: white; }
-      body #traits section h2 {
+      body .traits section h2 {
         margin: 0 !important; }
-      body #traits section li {
+      body .traits section li {
         height: auto !important; } }
 @media only screen and (min-device-width: 320px) and (max-device-width: 600px) and (max-device-width: 370px) and (orientation: portrait) {
   body header {
@@ -110,7 +113,7 @@ body {
       margin-bottom: -100px; }
     body header nav {
       display: none; }
-  body #traits {
+  body .traits {
     margin-top: 60px;
     margin-left: 102px;
     padding-left: 5px; } }
@@ -122,7 +125,9 @@ body {
       display: block;
       position: relative;
       left: 0; }
-  body #traits {
+  body .traits {
     margin-top: 10px;
     margin-left: 200px;
     padding-left: 10px; } }
+
+/*# sourceMappingURL=main.css.map */
