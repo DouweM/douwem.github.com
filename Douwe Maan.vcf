@@ -1533,7 +1533,7 @@ PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQEASABIAAD/4QB0RXhpZgAATU0AKgAA
  3BYdPRf4z7ntW14X8QWPjvS20rV1xKOCefUkfdC/3R3rqdX/5E9/8AdH/oQrx34Sf8hCX6j/2a
  nB6GCZ1Uep3/AMOL5LWc7rTnA49M/wC0erVs/wDC57L+5/n/AL4rnfjH/wAfUX4/ySvCKiWjB7
  n/2Q==
-  
+
 N:Maan;Douwe
 FN:Douwe Maan
 ORG:GitLab
@@ -1544,13 +1544,13 @@ EMAIL;type=INTERNET;type=HOME:hi@douwe.me
 EMAIL;type=INTERNET;type=WORK:douwe@gitlab.com
 TEL;type=CELL;type=VOICE;type=pref:+31 6 817 647 33
 
-URL;type=HOME;type=pref:http://www.douwe.me
+URL;type=HOME;type=pref:https://www.douwe.me
 item1.URL:https://twitter.com/DouweM
 item1.X-ABLabel:twitter
 item2.URL:https://github.com/DouweM
 item2.X-ABLabel:GitHub
 
-X-SOCIALPROFILE;type=twitter:http://twitter.com/DouweM
+X-SOCIALPROFILE;type=twitter:https://twitter.com/DouweM
 X-TWITTER;type=HOME:DouweM
 
 X-SKYPE;type=HOME:douwemaan
