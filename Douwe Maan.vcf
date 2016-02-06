@@ -1537,7 +1537,7 @@ PHOTO;ENCODING=b;TYPE=JPEG:/9j/4AAQSkZJRgABAQEASABIAAD/4QB0RXhpZgAATU0AKgAA
 N:Maan;Douwe
 FN:Douwe Maan
 ORG:GitLab
-TITLE:Developer
+TITLE:Development Lead
 BDAY:1994-01-01
 
 EMAIL;type=INTERNET;type=HOME:hi@douwe.me
@@ -1547,8 +1547,10 @@ TEL;type=CELL;type=VOICE;type=pref:+31 6 817 647 33
 URL;type=HOME;type=pref:https://www.douwe.me
 item1.URL:https://twitter.com/DouweM
 item1.X-ABLabel:twitter
-item2.URL:https://github.com/DouweM
-item2.X-ABLabel:GitHub
+item2.URL:https://gitlab.com/DouweM
+item2.X-ABLabel:GitLab.com
+item3.URL:https://github.com/DouweM
+item3.X-ABLabel:GitHub
 
 X-SOCIALPROFILE;type=twitter:https://twitter.com/DouweM
 X-TWITTER;type=HOME:DouweM
