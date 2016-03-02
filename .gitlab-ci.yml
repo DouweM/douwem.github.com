@@ -1,0 +1,10 @@
+pages:
+  image: ruby:2.1
+  script:
+  - gem install jekyll
+  - jekyll build -d public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
